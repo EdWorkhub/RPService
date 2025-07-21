@@ -1,1 +1,31 @@
-GameComponent
+<div *ngIf="gameStarted; else notStarted">
+    Game is started!
+</div>
+<ng-template #notStarted>
+    Game is not started. 
+</ng-template>
+
+<button id="route2" (click)="onMenu()">Menu</button>
+
+<div class="game-button-container">
+    <button class="game-btn" (click)="onPlayerVal('rock')">
+        Rock
+    </button>
+    <button class="game-btn" (click)="onPlayerVal('paper')">
+        Paper
+    </button>
+    <button class="game-btn" (click)="onPlayerVal('scissors')">
+        Scissors
+    </button>
+</div>
+
+<div class="game-result-container" *ngIf="roundComplete">
+    Player Choice: {{ playerVal }}
+    CPU Choice: {{ cpuVal }}
+    Round Result: {{ result }}
+</div>
+
+<div class="game-component-container">
+    <app-display [roundResult]="result"/>
+    <app-history />
+</div>

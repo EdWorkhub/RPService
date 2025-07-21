@@ -1,0 +1,16 @@
+/* || RESET */ 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    caret-color: transparent;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    max-width: 1800px; 
+    margin: 0 auto; 
+}
