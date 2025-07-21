@@ -24,6 +24,11 @@ export class GameComponent {
   // Sets buttons as disabled until @Output() from DisplayComponent recieved 
   disabled = false;
 
+  // || General FUNCTIONS 
+  buttonsDisabled(event: boolean) {
+    this.disabled = event
+  }
+
   // || onClick FUNCTIONS
   // On Click, navigates back to Menu 
   onMenu() {
@@ -33,6 +38,7 @@ export class GameComponent {
   // On Click, passes in playerVal option (string in HTML)
   onPlayerVal(playerVal: Val) {
     // Set playerVal in Service equal to Local playerVal from btn
+    this.disabled = true;
     this.playerVal = playerVal;
     this.rpsService.playerVal = playerVal;
     // Create Local var to recieve Service cpuVal and Result (only to display locally for convenience prior to display and history components, removing in final version)

@@ -1,18 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.scss']
 })
-export class DisplayComponent {
+export class DisplayComponent implements OnChanges {
   @Input() roundResult: string = ''
-  @Output() done = new EventEmitter<boolean>(false) 
+  @Output() done = new EventEmitter<boolean>() 
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['roundResult'] && this.roundResult !== '') {
+      this.setAsDone();
+    }
+  }
 
   setAsDone() {
-    if(this.roundResult != '') {
-      this.done.emit(true);
-    }
+    this.done.emit(true);
     this.roundResult = '';
   }
 

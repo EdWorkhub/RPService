@@ -8,7 +8,7 @@
 <button id="route2" (click)="onMenu()">Menu</button>
 
 <div class="game-button-container">
-    <button class="game-btn" (click)="onPlayerVal('rock')">
+    <button class="game-btn" [disabled]="disabled" (click)="onPlayerVal('rock')">
         Rock
     </button>
     <button class="game-btn" (click)="onPlayerVal('paper')">
@@ -26,6 +26,6 @@
 </div>
 
 <div class="game-component-container">
-    <app-display [roundResult]="result"/>
+    <app-display [roundResult]="result" (done)="buttonsDisabled($event)" />
     <app-history />
 </div>
