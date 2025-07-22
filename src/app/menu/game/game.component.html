@@ -11,10 +11,10 @@
     <button class="game-btn" [disabled]="disabled" (click)="onPlayerVal('rock')">
         Rock
     </button>
-    <button class="game-btn" (click)="onPlayerVal('paper')">
+    <button class="game-btn" [disabled]="disabled" (click)="onPlayerVal('paper')">
         Paper
     </button>
-    <button class="game-btn" (click)="onPlayerVal('scissors')">
+    <button class="game-btn" [disabled]="disabled" (click)="onPlayerVal('scissors')">
         Scissors
     </button>
 </div>

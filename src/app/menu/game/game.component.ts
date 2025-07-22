@@ -25,8 +25,9 @@ export class GameComponent {
   disabled = false;
 
   // || General FUNCTIONS 
-  buttonsDisabled(event: boolean) {
-    this.disabled = event
+  // When DisplayComponent returns done = true, disabled should = false
+  buttonsDisabled(done: boolean) {
+    this.disabled = !done;
   }
 
   // || onClick FUNCTIONS
