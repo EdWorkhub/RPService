@@ -8,8 +8,12 @@ import { RpsService } from '../rps.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+  // Added Router; Service Injection (RpsService)
   constructor(private router: Router, private rpsService: RpsService) {}
 
+  // || General FUNCTIONS 
+
+  // Starts Game - routes to '/game' and sets gameStarted bool to True (in service)
   onStartGame() {
     this.rpsService.startGame();
     console.log(this.rpsService.gameStarted);

@@ -25,12 +25,9 @@ export class GameComponent {
   disabled = false;
 
   // || General FUNCTIONS 
-  // When DisplayComponent returns done = true, disabled should = false
-  buttonsDisabled(done: boolean) {
-    this.disabled = !done;
-  }
 
   // || onClick FUNCTIONS
+
   // On Click, navigates back to Menu 
   onMenu() {
     this.router.navigate(['/menu']);
@@ -39,7 +36,6 @@ export class GameComponent {
   // On Click, passes in playerVal option (string in HTML)
   onPlayerVal(playerVal: Val) {
     // Set playerVal in Service equal to Local playerVal from btn
-    this.disabled = true;
     this.playerVal = playerVal;
     this.rpsService.playerVal = playerVal;
     // Create Local var to recieve Service cpuVal and Result (only to display locally for convenience prior to display and history components, removing in final version)
@@ -55,4 +51,13 @@ export class GameComponent {
   get gameStarted(): boolean {
     return this.rpsService.gameStarted;
   }
+
+  // || Deprecated FUNCTIONS
+
+  // When DisplayComponent returns done = true, disabled should = false
+  buttonsDisabled(done: boolean) {
+    this.disabled = done;
+  }
+
+
 }

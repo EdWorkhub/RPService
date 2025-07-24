@@ -8,6 +8,7 @@ export type Val = 'rock' | 'paper' | 'scissors';
   providedIn: 'root'
 })
 export class RpsService {
+  // Added Router;
   constructor(private router: Router) { }
 
   // || VARIABLES 
@@ -47,11 +48,11 @@ export class RpsService {
   }
 
   // || Helper FUNCTIONS
-  getCpuOption() {
-    return this.moves[Math.floor(Math.random() * 3)]
-  }
+
 
   // || General FUNCTIONS 
+
+  // Start Game
   startGame() {
     this.gameStarted = true;
   }
@@ -60,6 +61,11 @@ export class RpsService {
   resetGame() {
     this.router.navigate(['/menu']);
     this.gameStarted = false;
+  }
+
+  // Get CPU Input
+  getCpuOption() {
+    return this.moves[Math.floor(Math.random() * 3)]
   }
 
   // playerVal set by GameComponent, then getWinner() triggered within GameComponent
@@ -72,12 +78,16 @@ export class RpsService {
     return {
       roundResult: this.roundResult, 
       cpuVal: this.cpuVal
-  };
+    };
+  }
 }
-}
-      // storeWinner(winnerVal) {
-        // Sends winnerVal to HistoryComponent, pop into History array 
-        // Iterate local playerScore or cpuScore values, get from service where needed in component (History)
+
+
+  // HistoryComponent Logic TO DO 
+  // storeWinner(winnerVal) {
+  // Sends winnerVal to HistoryComponent, pop into History array 
+  // Iterate local playerScore or cpuScore values, get from service where needed in component (History)
+
 
   // || Deprecated FUNCTIONS 
 

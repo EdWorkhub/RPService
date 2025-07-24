@@ -1,35 +1,56 @@
-import { AfterViewChecked, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.scss']
 })
-export class DisplayComponent implements OnChanges, AfterViewChecked {
-  // Input to recieve win status from GameComponent
-  @Input() roundResult: string = '';
+export class DisplayComponent {
   // Output to trigger disabled / enabled button status in Game Component 
   @Output() done = new EventEmitter<boolean>() ;
-  // Experiment to make ngOnChanges more consistent on rapid change cycles (pressing input button over and over...)
-  readyToEmit = false;
 
+  /* Attempting to dynamically handle @Output() values without an explicit trigger
+  (i.e in response to a change from a parent component rather than in response to onClick) 
+  is very challenging / impossible without Angular Change Detection (ie ngOnChanges() or ngDoCheck())
+  Essentially need logic that fires on each time Input is updated (regardless of last Input condition) 
+  */
 
-  // Angular Change Detection: creates an object called "changes" of Type SimpleChanges - this tracks CurrentValue, PreviousValue and FirstChange (if first time val has changed)
-  ngOnChanges(changes: SimpleChanges) {
-    // roundResult init as empty string, when val updates triggers. Guard against being triggered prior to valid roundResult 
-    if (changes['roundResult'] && this.roundResult !== '') {
-      this.readyToEmit = true;
-    }
-  }
-
-  // ngAfterViewChecked = Pre-Reqs Wrapper
-  ngAfterViewChecked(): void {
-    // If ngOnChanges is done...
-    if (this.readyToEmit) {
-      // Then emit "done"=true to tell GameComponent that we are finished processing 
+  // Using Setter Input allows logic to be run directly against @Input() hook as soon as it is made available to Component 
+  @Input() set roundResult(value: string) {
+    if (value === 'win') {
       this.done.emit(true);
-      // Change trigger property to false to prepare for next input
-      this.readyToEmit = false;
+      console.log('win');
+    } else if (value === 'tie') {
+      this.done.emit(false);
+      console.log('tie');
+    } else if (value === 'lose') {
+      this.done.emit(false);
+      console.log('lose');
     }
   }
+
+  // || General FUNCTIONS 
+
+  // || Deprecated FUNCTIONS 
+
+  // Attempt to use Angular Change Detection to check for changes object in
+
+  // // Angular Change Detection: creates an object called "changes" of Type SimpleChanges - this tracks CurrentValue, PreviousValue and FirstChange (if first time val has changed)
+  // ngOnChanges(changes: SimpleChanges) {
+  //   // roundResult init as empty string, when val updates triggers. Guard against being triggered prior to valid roundResult 
+  //   if (changes['roundResult'] && this.roundResult !== '') {
+  //     this.readyToEmit = true;
+  //   }
+  // }
+
+  // // ngAfterViewChecked = Pre-Reqs Wrapper
+  // ngAfterViewChecked(): void {
+  //   // If ngOnChanges is done...
+  //   if (this.readyToEmit) {
+  //     // Then emit "done"=true to tell GameComponent that we are finished processing 
+  //     this.done.emit(true);
+  //     // Change trigger property to false to prepare for next input
+  //     this.readyToEmit = false;
+  //   }
+  // }
 }
