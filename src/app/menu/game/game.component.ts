@@ -17,6 +17,10 @@ export class GameComponent {
   string: string = ''
   // Subscribe to BS string obvs in Service
   ngOnInit() {
+    // fake route guard because real ones are way too complicated, big sad 
+    if (this.rpsService.gameStarted === false) {
+      this.router.navigate(['/menu']);
+    }
     // str is Service value, sets Local value to Service Value - can be interpolated in template
     this.rpsService.string$.subscribe(str => this.string = str)
   }

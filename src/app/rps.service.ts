@@ -24,7 +24,7 @@ export class RpsService {
   // Tracking Generated CPU Choice 
   cpuVal!: Val;
   // Tracking Round Outcome
-  roundResult = ''
+  roundResult!: string;
   // Used to fire Player or CPU victory functions
   playerWins = null;
   // Array to Convert Player Input into String
