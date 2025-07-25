@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RpsService } from 'src/app/rps.service';
 
 @Component({
   selector: 'app-display',
@@ -6,6 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent {
+
+  constructor(private rpsService: RpsService) {}
+
   // Output to trigger disabled / enabled button status in Game Component 
   @Output() done = new EventEmitter<boolean>() ;
 
@@ -16,7 +20,11 @@ export class DisplayComponent {
   */
 
   // Using Setter Input allows logic to be run directly against @Input() hook as soon as it is made available to Component 
+  // Backing property used to intercept roundResult setter and store 
+  private _roundResult!: string
+
   @Input() set roundResult(value: string) {
+    this._roundResult = value;
     if (value === 'win') {
       this.done.emit(true);
       console.log('win');
@@ -29,7 +37,21 @@ export class DisplayComponent {
     }
   }
 
+  // Getter for roundResult backing value
+  get roundResult(): string {
+    return this._roundResult;
+  }
+
   // || General FUNCTIONS 
+
+  // Test BS 
+  // BS String recipient 
+  string: string = ''
+  // Subscribe to BS string obvs in Service
+  ngOnInit() {
+  // str is Service value, sets Local value to Service Value - can be interpolated in template
+    this.rpsService.string$.subscribe(str => this.string = str)
+  }
 
   // || Deprecated FUNCTIONS 
 

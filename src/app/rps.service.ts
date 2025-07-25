@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 // Type - inline as only one Type...
 export type Val = 'rock' | 'paper' | 'scissors';
@@ -80,14 +81,27 @@ export class RpsService {
       cpuVal: this.cpuVal
     };
   }
-}
 
+  // Test BS, running in parellel with existing functions - using to send data to other components 
+  // Set BS property with init value of return value
+  private stringSource = new BehaviorSubject<string>(this.returnString());
+  // Set obvs obj 
+  string$ = this.stringSource.asObservable();
+  // string return value 
+  returnString() {
+    return this.roundResult;
+  }
+  // ACTUAL function to call to GET VALUE at TARGET COMPONENT YE CUNT 
+  refreshString() {
+    this.stringSource.next(this.returnString())
+  }
 
   // HistoryComponent Logic TO DO 
   // storeWinner(winnerVal) {
   // Sends winnerVal to HistoryComponent, pop into History array 
   // Iterate local playerScore or cpuScore values, get from service where needed in component (History)
 
+}
 
   // || Deprecated FUNCTIONS 
 

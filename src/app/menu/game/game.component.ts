@@ -12,6 +12,15 @@ export class GameComponent {
   // Router allows navigation, rpsService allows access to service 
   constructor(private router: Router, private rpsService: RpsService) {}
 
+  // Test BS 
+  // BS String recipient 
+  string: string = ''
+  // Subscribe to BS string obvs in Service
+  ngOnInit() {
+    // str is Service value, sets Local value to Service Value - can be interpolated in template
+    this.rpsService.string$.subscribe(str => this.string = str)
+  }
+
   // || VARIABLES
   // Player Input (passed as string from HTML)
   playerVal!: Val 
@@ -45,6 +54,8 @@ export class GameComponent {
     this.result = result.roundResult;
     // Set roundComplete boolean to True so that GameComponent triggers *ngIf only after one round has been run
     this.roundComplete = true;
+    // Test BS 
+    this.rpsService.refreshString();
   }
 
   // || Getter FUNCTIONS
