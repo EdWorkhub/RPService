@@ -1,35 +1,49 @@
-<div *ngIf="gameStarted; else notStarted">
-    Game is started!
-</div>
-<ng-template #notStarted>
-    Game is not started. 
-</ng-template>
+<div class="game-container">
+    <div class="game-text-container">
+        <div *ngIf="gameStarted; else notStarted">
+            Welcome to Angular RPS!
+        </div>
+        <!-- if gameStarted value tracking correctly, should never see this text in template -->
+        <ng-template #notStarted>
+            ..you shouldn't be here.
+        </ng-template>
+    </div>
 
-<button id="route2" (click)="onMenu()">Menu</button>
+    <!-- <button id="route2" (click)="onMenu()">Menu</button> -->
 
-<div class="game-button-container">
-    <button class="game-btn"  (click)="onPlayerVal('rock')">
-        Rock
-    </button>
-    <button class="game-btn"  (click)="onPlayerVal('paper')">
-        Paper
-    </button>
-    <button class="game-btn"  (click)="onPlayerVal('scissors')">
-        Scissors
-    </button>
-</div>
+    <div class="game-button-container">
+        <button class="game-btn" id="game-btn-rock"  (click)="onPlayerVal('rock')">
+            Rock
+        </button>
+        <button class="game-btn" id="game-btn-paper"  (click)="onPlayerVal('paper')">
+            Paper
+        </button>
+        <button class="game-btn" id="game-btn-scissors" (click)="onPlayerVal('scissors')">
+            Scissors
+        </button>
+    </div>
 
-<div class="game-result-container" *ngIf="roundComplete">
-    Player Choice: {{ playerVal }}
-    <br />
-    CPU Choice: {{ cpuVal }}
-    <br />
-    Round Result: {{ result }}
-    <br />
-    Test BS: {{ string }}
-</div>
+    <div class="game-result-container">
+        <div class="game-result-text">
+            <p id="game-result-player-choice">
+                Player Choice: {{ playerVal }}
+            </p>
+            <p id="game-result-cpu-choice">
+                CPU Choice: {{ cpuVal }}
+            </p>
+            <!-- <p id="game-result-round-result">
+                Round Result: {{ result }}
+            </p> -->
+            <p id="game-result-bsubject"></p>
+                Round Result: {{ string }}
+        </div>
+    </div>
 
-<div class="game-component-container">
-    <app-display [roundResult]="result" (done)="buttonsDisabled($event)" />
-    <app-history />
+    <div class="game-display-container">
+        <app-display [roundResult]="result" (done)="buttonsDisabled($event)" />
+    </div>
+
+    <div class="game-history-container">
+        <app-history />
+    </div>
 </div>

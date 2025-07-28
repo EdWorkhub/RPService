@@ -1,0 +1,34 @@
+/* || HOST - styling applied at root element level (i.e to app-menu as is generated in DOM - ask about this */ 
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* || CONTAINER / FLEXBOX */ 
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+/* || BUTTONS */ 
+
+#menu-start-btn {
+    height: 300px;
+    width: 450px;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    margin: 0rem 1rem 0rem 0rem;
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 20px;
+}

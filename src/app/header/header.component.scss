@@ -2,16 +2,30 @@
     display: flex; 
     justify-content: space-around;
     align-items: center;
-    height: 8vh; 
+    padding: 1rem 0rem 1rem 0rem;
     background-color: aquamarine;
-
 }
 
 .header-h1 {
-    
+    display: flex; 
+    margin: auto; 
+    gap: 1rem;
 }
 
+// Button styling hijacked *ahem* politely borrowed from [https://getcssscan.com/css-buttons-examples] (Button 2)
+
 .header-refresh-btn {
-    height: 20px;
+    height: 40px;
     width: 100px;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    margin: 0rem 2rem 0rem 0rem;
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
+
