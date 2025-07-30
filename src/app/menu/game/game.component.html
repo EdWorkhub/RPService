@@ -1,15 +1,4 @@
 <div class="game-container">
-    <div class="game-text-container">
-        <div *ngIf="gameStarted; else notStarted">
-            Welcome to Angular RPS!
-        </div>
-        <!-- if gameStarted value tracking correctly, should never see this text in template -->
-        <ng-template #notStarted>
-            ..you shouldn't be here.
-        </ng-template>
-    </div>
-
-    <!-- <button id="route2" (click)="onMenu()">Menu</button> -->
 
     <div class="game-button-container">
         <button class="game-btn" id="game-btn-rock"  (click)="onPlayerVal('rock')">
@@ -24,19 +13,14 @@
     </div>
 
     <div class="game-result-container">
-        <div class="game-result-text">
             <p id="game-result-player-choice">
-                Player Choice: {{ playerVal }}
+                Player Choice: <br />
+                {{ playerVal }}
             </p>
             <p id="game-result-cpu-choice">
-                CPU Choice: {{ cpuVal }}
+                CPU Choice: <br />
+                {{ cpuVal }}
             </p>
-            <!-- <p id="game-result-round-result">
-                Round Result: {{ result }}
-            </p> -->
-            <p id="game-result-bsubject"></p>
-                Round Result: {{ string }}
-        </div>
     </div>
 
     <div class="game-display-container">

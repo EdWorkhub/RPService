@@ -1,3 +1,9 @@
 DC Result: {{ roundResult }}
-<br />
-Test BS in Display: {{ string }}
+
+<div *ngIf="roundResult">
+
+</div>
+
+<div *ngIf="animationColor"
+    [ngClass]="animationColor || ''"
+    class="result-box animate"></div>

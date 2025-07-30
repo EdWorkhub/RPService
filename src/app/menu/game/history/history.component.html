@@ -1,13 +1,15 @@
-<br />
-Test BS Array.Data in History: {{ results[0] }}
-<br />
-Test History Array 
-<div class="history-container">
+    <!-- <br />
+    Test BS Array.Data in History: {{ results[0] }}
+    <br />
+    Test History Array  -->
+
+<!-- <div class="history-container">
     <ng-container *ngFor="let result of results">
         {{ result }}
+    </ng-container> -->
+
+    <ng-container *ngFor="let animations of animationHistory">
+        <div [ngClass]="animations" class="result-box animate"></div>
     </ng-container>
-    
-    <!-- <div class="history-results" *ngFor="let result of results">
-        {{ result }}
-    </div> -->
-</div>
+
+<!-- </div> -->

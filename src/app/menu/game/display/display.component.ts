@@ -10,6 +10,9 @@ export class DisplayComponent {
 
   constructor(private rpsService: RpsService) {}
 
+  // Inline Type Used for Win / Loss animation logic 
+  animationColor: 'green' | 'gray' | 'red' | null = 'green';
+
   // Output to trigger disabled / enabled button status in Game Component 
   @Output() done = new EventEmitter<boolean>() ;
 
@@ -26,14 +29,11 @@ export class DisplayComponent {
   @Input() set roundResult(value: string) {
     this._roundResult = value;
     if (value === 'win') {
-      this.done.emit(true);
-      console.log('win');
+      // this.done.emit(true);
     } else if (value === 'tie') {
-      this.done.emit(false);
-      console.log('tie');
+      // this.done.emit(false);
     } else if (value === 'lose') {
-      this.done.emit(false);
-      console.log('lose');
+      // this.done.emit(false);
     }
   }
 
@@ -44,14 +44,27 @@ export class DisplayComponent {
 
   // || General FUNCTIONS 
 
-  // Test BS 
-  // BS String recipient 
-  string: string = ''
-  // Subscribe to BS string obvs in Service
+  displayResult(val: string) {
+    if (val === 'win') {
+      this.animationColor = 'green';
+    } else if (val === 'tie') {
+      this.animationColor = 'gray';
+    } else if (val === 'lose') {
+      this.animationColor = 'red';
+    } else {
+      this.animationColor = null;
+    }
+  }
+
   ngOnInit() {
   // str is Service value, sets Local value to Service Value - can be interpolated in template
-    this.rpsService.string$.subscribe(str => this.string = str)
+    this.rpsService.string$.subscribe(val => {
+      this.displayResult(val)
+    })
   }
+
+  //   this.rpsService.string$.subscribe(str => this.string = str)
+  // }
 
   // || Deprecated FUNCTIONS 
 

@@ -1,7 +1,33 @@
-/* || RESET */ 
+/* || GENERAL & RESET */ 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    caret-color: transparent;
+}
 
 html, body {
     margin: 0; 
+    width: 100%;
     height: 100%;
 }
+/* || ROOT VARIABLES */ 
+
+:root {
+    /* COLORS */
+    --primary-bg: #1F2937;
+    --secondary-bg: #E5E7EB;
+    --tertiary-clr: #3882F6;
+    --primary-font: #F9FAF8;
+    --secondary-font: #E5E7EB;
+    --third-font: #1F2937;
+    /* PADDING */
+    --primary-padding: 1.5rem 0rem 1.5rem 0rem 
+}
+
+
+
+/* || UTILITY */
+
 

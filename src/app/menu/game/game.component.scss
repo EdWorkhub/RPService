@@ -17,23 +17,16 @@
 // improve these containers...
 
 .game-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.game-text-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 0rem 1rem 0rem;
-    overflow: auto;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    height: 100%;
 }
 
 .game-button-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0rem 1rem 0rem;
+    padding: var(--primary-padding);
     background-color: lightpink;
     overflow: auto;
 }
@@ -42,8 +35,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    padding: 1rem 3rem 1rem 3rem; 
+    justify-content: space-around;
+    padding: var(--primary-padding);
     background-color: lightblue;
     overflow: auto;
 }
@@ -52,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 6rem 3rem 6rem; 
+    padding: var(--primary-padding);
     background-color: lightgray;
     overflow: auto;
 }
@@ -61,14 +54,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 6rem 3rem 6rem; 
+    padding: var(--primary-padding);
     background-color: lightyellow;
     overflow: auto;
 }
 
 /* || TEXT / RESULTS */ 
 .game-result-text {
-    padding: 0rem 0rem 1.5rem 0rem;
+    padding: var(--primary-padding);
 }
 
 // Ignore? May just use DisplayComponent
